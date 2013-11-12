@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace WebActivatorEx
+namespace AppActivator
 {
     // Base class of all the activation attributes
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Security;
 
 
-namespace WebActivatorEx
+namespace AppActivator
 {
     public class ActivationManager
     {
