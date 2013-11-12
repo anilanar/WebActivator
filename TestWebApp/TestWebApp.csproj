@@ -23,6 +23,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,13 +117,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestLibrary\TestLibrary.csproj">
-      <Project>{3D5B026A-2E5F-4C03-8F70-945517215017}</Project>
-      <Name>TestLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebActivator\WebActivator.csproj">
+    <ProjectReference Include="..\WebActivator\AppActivator.csproj">
       <Project>{339C42C9-C961-4E37-B64E-16F1EF03E4D9}</Project>
-      <Name>WebActivator</Name>
+      <Name>AppActivator</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

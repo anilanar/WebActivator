@@ -5,13 +5,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{638765A7-E010-495F-B325-821D735B2121}</ProjectGuid>
+    <ProjectGuid>{339C42C9-C961-4E37-B64E-16F1EF03E4D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestLibrary2</RootNamespace>
-    <AssemblyName>TestLibrary2</AssemblyName>
+    <RootNamespace>WebActivatorEx</RootNamespace>
+    <AssemblyName>WebActivatorEx</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <BuildPackage>true</BuildPackage>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,30 +35,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyOtherStartupCode.cs" />
+    <Compile Include="ActivationManager.cs" />
+    <Compile Include="AssemblyExtensions.cs" />
+    <Compile Include="ApplicationShutdownMethodAttribute.cs" />
+    <Compile Include="PreApplicationStartMethodAttribute.cs" />
+    <Compile Include="BaseActivationMethodAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebActivator\AppActivator.csproj">
-      <Project>{339C42C9-C961-4E37-B64E-16F1EF03E4D9}</Project>
-      <Name>AppActivator</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
+    <None Include="Properties\WebActivator.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
+  <!-- Sign the assembly if the environment variable is set -->
+  <PropertyGroup Condition="'$(PRIVATE_SNK_FILE)' != ''">
+    <AssemblyOriginatorKeyFile>$(PRIVATE_SNK_FILE)</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
 </Project>
